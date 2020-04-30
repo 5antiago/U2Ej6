@@ -5,13 +5,11 @@ def Salir(fecha):
 def Sumar(fecha):
     a = int(input("Ingrese horas a sumar: "))
     fecha = fecha + a
-    fecha.controla()
     print("La fecha cambió a: {}".format(fecha.Mostrar()))
 
 def Restar(fecha):
     a = int(input("Ingrese horas a restar: "))
     fecha = fecha - a
-    fecha.controla()
     print("La fecha cambió a: {}".format(fecha.Mostrar()))
 
 def mayor(fe):

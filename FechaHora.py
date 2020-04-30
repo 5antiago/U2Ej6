@@ -66,21 +66,37 @@ class FechaHora:
             self.__Anio += 1
     def __add__(self, Hora):
         if type(Hora)== int:
-            return FechaHora(self.__Dia, self.__Mes, self.__Anio, self.__Hora + Hora, self.__Min, self.__Segs)
+            aux = FechaHora(self.__Dia, self.__Mes, self.__Anio, self.__Hora + Hora, self.__Min, self.__Segs)
+            aux.controla()
+            return aux
     def __radd__(self, Hora):
         if type(Hora)== int:
-            return FechaHora(self.__Dia, self.__Mes, self.__Anio, self.__Hora + Hora, self.__Min, self.__Segs)
+            aux = FechaHora(self.__Dia, self.__Mes, self.__Anio, self.__Hora + Hora, self.__Min, self.__Segs)
+            aux.controla()
+            return aux
     def __sub__(self, Hora):
         if type(Hora)== int:
-            return FechaHora(self.__Dia, self.__Mes, self.__Anio, self.__Hora - Hora, self.__Min, self.__Segs)
+            aux = FechaHora(self.__Dia, self.__Mes, self.__Anio, self.__Hora - Hora, self.__Min, self.__Segs)
+            aux.controla()
+            return aux
     def __gt__(self, otro):
         if type(otro) == FechaHora:
             if self.__Hora > otro.gethora():
                 return True
+            elif self.__Hora == otro.gethora():
+                if self.__Min > otro.getmins():
+                    return True
+                elif self.__Min == otro.getmins():
+                    if self.__Segs > otro.getsegs():
+                        return True
+                    else:
+                        return False
+                else:
+                    return False
             else:
                 return False
         elif type(otro) == int:
-            if self.__Hora > otro.gethora():
+            if self.__Hora > otro:
                 return True
             else:
                 return False
